@@ -45,7 +45,7 @@ def get_df(filepath, col_names, name=None):
     
     return name, df
 
-def transfer_to_array(df):
+def transform_to_array(df):
     """Transform dataframe to numpy array
 
     Args:
@@ -138,7 +138,7 @@ def pipeline(path, col_names, epsilon):
 
     name, df = get_df(path, col_names)
 
-    coor_array = transfer_to_array(df)
+    coor_array = transform_to_array(df)
     del df
 
     _labels = dbscan_clustering(coor_array, epsilon)
