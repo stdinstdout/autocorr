@@ -99,7 +99,7 @@ def auto_correction_data(coor_array, _labels):
     for label in unique_labels:
         indexes = _labels[_labels==label].index
         final_array = np.append(final_array, choose_point(coor_array[indexes]), axis=0)
-        
+    final_array = np.reshape(final_array, (-1,2))
     return final_array
 
 def make_final_df(final_coor, name):
@@ -119,6 +119,7 @@ def make_final_df(final_coor, name):
     df = df[['species','longitude','latitude']]
     return df
 
+# TODO: if saving in current dir 
 def write_csv(path, name, df):
     """Write csv file with data in df file
 
