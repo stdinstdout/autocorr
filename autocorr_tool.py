@@ -120,18 +120,19 @@ def make_final_df(final_coor, name):
     return df
 
 # TODO: if saving in current dir 
-def write_csv(path, name, df):
+def write_csv(df, name, path = None):
     """Write csv file with data in df file
 
     Args:
-        path (string): path where you would like to save file
-        name (string): name of saving file
+        path (string): path where you would like to save file, if None, file will be save in current dir
+        name (string): name of saving file, without ".csv"
         df (pandas DataFrame): dataframe with data you would like to write in csv
     """        
-    outfile_name = path+"\\"+name+".csv"
+    outfile_name = name + ".csv" if path == None else path + "\\" + name + ".csv"
+
     df.to_csv(outfile_name, index=False)
 
-def pipeline(path, col_names, epsilon):
+def do_pipeline(path, col_names, epsilon):
     format = path.split('.')[-1]
 
     if format not in ['txt','csv']:
